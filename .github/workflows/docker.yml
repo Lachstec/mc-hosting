@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - dev
+    paths:
+      - ./src/frontend/hosting
 
 jobs:
   docker:
@@ -28,6 +30,10 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Prepare metadata
+        id: prep
+        run: echo "created=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_ENV
+
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
@@ -35,3 +41,10 @@ jobs:
           file: ./src/frontend/hosting/Dockerfile
           push: true
           tags: ghcr.io/lachstec/frontend:dev
+          labels: |
+            org.opencontainers.image.title=Frontend
+            org.opencontainers.image.description=Server Control
+            org.opencontainers.image.source=${{ github.repositoryUrl }}
+            org.opencontainers.image.version=dev
+            org.opencontainers.image.created=${{ steps.prep.outputs.created }}
+            org.opencontainers.image.base.name=node:20
