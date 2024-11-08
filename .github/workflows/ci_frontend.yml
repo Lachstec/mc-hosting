@@ -25,4 +25,4 @@ jobs:
       - name: Install dependencies
         run: pnpm install -D
       - name: Check formatting with Prettier
-        run: pnpm prettier:check
+        run: pnpm prettier --check "src/frontend/**"
