@@ -8,8 +8,8 @@
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "prettier:format": "prettier --write \"**/*.{ts,tsx,js,md,mdx,css,yaml}\"",
-    "prettier:check": "prettier --check \"**/*.{ts,tsx,js,md,mdx,css,yaml}\""
+    "prettier:format": "prettier --write \"**/*.{ts,tsx,js,md,mdx,css,yaml,html}\"",
+    "prettier:check": "prettier --check \"**/*.{ts,tsx,js,md,mdx,css,yaml,html}\""
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^3.0.0",
