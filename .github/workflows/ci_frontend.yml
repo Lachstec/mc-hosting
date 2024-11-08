@@ -22,4 +22,5 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Check formatting with Prettier
-        run: npx prettier --check "src/frontend/**"
+        working-directory: src/frontend/hosting  # Run Prettier in the same directory
+        run: npx prettier --check "./**"
