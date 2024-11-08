@@ -1,4 +1,4 @@
-FROM node:20 AS builder
+sFROM node:20 AS builder
 
 WORKDIR /app
 
@@ -14,4 +14,5 @@ WORKDIR /app
 COPY package*.json .
 COPY --from=builder /app/build .
 
+EXPOSE 4173
 CMD [ "node", "index.js" ]
