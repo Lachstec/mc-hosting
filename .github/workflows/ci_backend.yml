@@ -1,7 +1,6 @@
 name: Backend CI
 on:
   pull_request:
-    paths: [ 'src/provisioning/**' ]
 
 env:
   GO_VERSION: '1.23.3'
@@ -20,9 +19,10 @@ jobs:
 
       - name: Run Linter
         uses: golangci/golangci-lint-action@v6
-        working-directory: src/provisioning
         with:
           version: v1.60
+          working-directory: src/provisioning
+
 
   build:
     runs-on: ubuntu-latest
