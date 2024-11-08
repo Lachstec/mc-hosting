@@ -20,6 +20,7 @@ jobs:
 
       - name: Run Linter
         uses: golangci/golangci-lint-action@v6
+        working-directory: src/provisioning
         with:
           version: v1.60
 
@@ -35,12 +36,15 @@ jobs:
           go-version: ${{ env.GO_VERSION }}
 
       - name: Install Dependencies
+        working-directory: src/provisioning
         run: go get .
 
       - name: Build Service
+        working-directory: src/provisioning
         run: go build -v ./...
 
       - name: Run Unit Tests
+        working-directory: src/provisioning
         run: go test
 
 
